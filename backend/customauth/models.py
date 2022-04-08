@@ -16,7 +16,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='Адрес электронной почты', unique=True)
     first_name = models.CharField(verbose_name='Имя', max_length=40)
     last_name = models.CharField(verbose_name='Фамилия', max_length=40)
-    patronymic = models.CharField(verbose_name='Отчество', max_length=40)
+    patronymic = models.CharField(verbose_name='Отчество', max_length=40, blank=True)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
