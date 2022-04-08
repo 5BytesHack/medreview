@@ -1,5 +1,5 @@
 <template>
-  <div class="my-body">
+  <div class="my-body d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <a href="" class="navbar-brand">
@@ -17,10 +17,10 @@
       </div>
       </div>
     </nav>
-    <div class="container main-content">
-
+    <div class="flex-grow-1 flex-shrink-1 main-content">
+      <router-view></router-view>
     </div>
-    <router-view/>
+
   </div>
 </template>
 
@@ -40,12 +40,11 @@ export default {
   background-color: #2DB5AB;
 }
 .my-body{
-  height: 100vh;
   background-color: #2DB5AB;
 }
 .main-content{
-  height: 100%;
-  background-image: url("./svg/background.svg") ;
-  background-position: left;
+  background-image: url("./svg/background.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 </style>
