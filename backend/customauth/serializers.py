@@ -63,8 +63,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'first_name', 'last_name', 'patronymic', 'token')
-        read_only_fields = ('token',)
+        fields = ('email', 'first_name', 'last_name', 'patronymic', 'is_staff', 'token', 'password')
+        read_only_fields = ('token', 'is_staff')
 
     def update(self, instance, validated_data):
 
