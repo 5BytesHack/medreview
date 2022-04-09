@@ -1,7 +1,7 @@
 <template>
   <div class="home container d-flex flex-column my-3">
     <div class="about-info">
-      <p class="choose-title text-center py-3 px-2">Добро пожаловать на сайт MedReview! Здесь вы модете создать обращение по работе медицинских учреждений. Мы ценим ваше мнение!</p>
+      <p class="choose-title text-center py-3 px-2">Добро пожаловать на сайт MedReview! <br> Здесь вы можете создать обращение по работе медицинских учреждений. Мы ценим ваше мнение!</p>
     </div>
 
     <div class="choose-btns d-flex flex-column mt-2 justify-content-around">
@@ -60,7 +60,6 @@ export default {
   url("~@/fonts/Inter-Black.ttf") format('truetype');
 }
 .home{
-  height: 100%;
 }
 .about-info{
     background-color: rgba(255, 255, 255, 0.65);
@@ -74,7 +73,7 @@ export default {
   font-family: 'Inter';
   font-weight: 400;
   font-style: normal;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   line-height: 2.118rem;
   color: #24958C;
 }

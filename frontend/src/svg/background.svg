@@ -1,27 +1,28 @@
-<svg width="390" height="756" viewBox="0 0 390 756" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="-40" width="432" height="805" rx="39" fill="#E7F9F7"/>
-<rect x="257" y="498" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="129" y="498" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="193" y="562" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="193" y="434" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="193" y="498" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="289" y="268.333" width="37" height="36.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="215" y="268.333" width="37" height="36.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="252" y="304.667" width="37" height="36.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="252" y="232" width="37" height="36.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="252" y="268.333" width="37" height="36.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="216.667" y="735.333" width="20.3333" height="20.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="176" y="735.333" width="20.3333" height="20.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="196.333" y="755.667" width="20.3333" height="20.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="196.333" y="715" width="20.3333" height="20.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="196.333" y="735.333" width="20.3333" height="20.3333" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="278" y="643" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="342" y="707" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="342" y="579" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="342" y="643" width="64" height="64" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="116" y="642" width="31" height="31" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="54" y="642" width="31" height="31" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="85" y="673" width="31" height="31" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="85" y="611" width="31" height="31" fill="#26DCBF" fill-opacity="0.2"/>
-<rect x="85" y="642" width="31" height="31" fill="#26DCBF" fill-opacity="0.2"/>
+<svg width="428" height="926" viewBox="0 0 428 926" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M428 926V40C428 17.9086 410.091 0 388 0H0V926H428Z" fill="#E7F9F7"/>
+<path d="M248 630H312V694H248V630Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M120 630H184V694H120V630Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M184 694H248V758H184V694Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M184 566H248V630H184V566Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M184 630H248V694H184V630Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M343 348.333H380V384.667H343V348.333Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M269 348.333H306V384.667H269V348.333Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M306 384.667H343V421H306V384.667Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M306 312H343V348.333H306V312Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M306 348.333H343V384.667H306V348.333Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M355.667 525.333H376V545.667H355.667V525.333Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M315 525.333H335.333V545.667H315V525.333Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M335.333 545.667H355.667V566H335.333V545.667Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M335.333 505H355.667V525.333H335.333V505Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M335.333 525.333H355.667V545.667H335.333V525.333Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M121 796H152V827H121V796Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M59 796H90V827H59V796Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M90 827H121V858H90V827Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M90 765H121V796H90V765Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M90 796H121V827H90V796Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M408 789H428V858H408V789Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M277 789.333H342.667V857.667H277V789.333Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M342.667 857.667H408.333V926H342.667V857.667Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M342.667 721H408.333V789.333H342.667V721Z" fill="#26DCBF" fill-opacity="0.2"/>
+<path d="M342.667 789.333H408.333V857.667H342.667V789.333Z" fill="#26DCBF" fill-opacity="0.2"/>
 </svg>
