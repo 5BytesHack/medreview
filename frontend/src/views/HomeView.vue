@@ -10,12 +10,11 @@
       </div>
       <div class="d-flex flex-column align-items-center justify-content-center">
         <button type="button" class="w-75 btn py-2 my-3">
-          <router-link id="makeApplyLink" to="/anon_send"><strong>Создать обращение</strong></router-link>
+          <router-link id="makeApplyLink" to="/apply_send"><strong>Создать обращение</strong></router-link>
         </button>
         <button type="button" class="w-75 btn py-2 mb-3">
           <router-link id="clinicRatingLink" to="/"><strong>Рейтинг клиник</strong></router-link>
-        </button><!-- rating -->
-        <button v-on:click="test" class="btn">ТЕСТ</button>
+        </button>
       </div>
     </div>
   </div>

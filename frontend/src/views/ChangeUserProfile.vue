@@ -4,26 +4,23 @@
       <form action="" class="d-flex flex-column h-100 pb-3 ">
         <div class="form-group mt-4 mb-2">
           <label for="fioinput" class="form-label">ФИО:</label>
-          <input type="email" class="form-control" id="fioinput" aria-describedby="emailHelp" v-bind:value="fio" :placeholder="ФИО">
+          <input type="text" class="form-control" id="fioinput" aria-describedby="fio" v-bind:value="fio" placeholder="ФИО">
         </div>
         <div class="form-group mb-2">
-          <label for="passwordinput" class="form-label">E-mail:</label>
-          <input type="password" class="form-control" id="passwordinput" aria-describedby="password" placeholder="Password">
+          <label for="oldpasswordinput" class="form-label">Старый пароль:</label>
+          <input type="password" class="form-control" id="oldpasswordinput" aria-describedby="password" placeholder="старый пароль">
+        </div>
+        <div class="form-group mb-2">
+          <label for="newpasswordinput" class="form-label">Новый пароль:</label>
+          <input type="password" class="form-control" id="newpasswordinput" aria-describedby="password" placeholder="новый пароль">
+        </div>
+        <div class="form-group mb-2">
+          <label for="newpasswordinput_2" class="form-label">Повторите новый пароль:</label>
+          <input type="password" class="form-control" id="newpasswordinput_2" aria-describedby="password" placeholder="повторите новый пароль">
         </div>
         <div class="flex-grow-1 d-flex flex-column justify-content-end">
-          <div class="form-check mb-2">
-            <div class="d-flex flex-row align-items-center ">
-              <div class="me-3">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              </div>
-              <div class="">
-                <label class="form-check-label form-label mb-0" for="exampleCheck1" >
-                  Согласен с <a href="">политикой</a> обработки данных</label>
-              </div>
-            </div>
-          </div>
           <div class="text-center w-100 mt-2">
-            <button type="button" class="w-75 btn  align-self-center py-2"><strong>Отправить</strong></button>
+            <button type="button" class="w-75 btn  align-self-center py-2"><strong>Сохранить</strong></button>
           </div>
         </div>
       </form>
@@ -45,7 +42,8 @@ export default {
   computed:{
     fio(){
       return store.getters.fio;
-    }
+    },
+
   }
 }
 </script>
