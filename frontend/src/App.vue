@@ -17,7 +17,6 @@
       </div>
       </div>
     </nav>
-
       <div class="flex-grow-1 flex-shrink-1 main-content overflow-auto">
         <router-view></router-view>
       </div>
