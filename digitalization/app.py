@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 from digitalizer import init_img_recognition_model, img_recognize_text
 
 
-UPLOAD_FOLDER = 'C:\Dev\HackatonMedreview\medreview\digitalization\media'
+UPLOAD_FOLDER = os.path.abspath(os.curdir) + '/media'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'bmp', 'webp'}
 
 app = Flask(__name__)
@@ -29,6 +29,7 @@ def upload_file():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
         recognized = img_recognize_text(file_path)
+        os.remove(file_path)
         # requests.post('django:8000', data={
         #     'author': None,
         #   #  'fio':
