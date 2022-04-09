@@ -4,6 +4,8 @@ import AboutView from '@/views/AboutView.vue';
 import AnonymousSend from "@/views/AnonymousSend";
 import UserCabinet from "@/views/UserCabinet";
 import ChangeUserProfile from "@/views/ChangeUserProfile";
+import ApplyDetails from "@/views/ApplyDetails";
+
 
 const routes = [
   {
@@ -46,6 +48,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     //component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
     component: ChangeUserProfile
+  },
+  {
+    path: '/apply_details',
+    name: 'apply_details',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    //component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: ApplyDetails
   }
 ]
 
