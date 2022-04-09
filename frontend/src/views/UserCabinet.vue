@@ -24,9 +24,9 @@
     </div>
 
   </div>
-  <div class="bg-white accordion-wrapper">
-    <h1 class="mt-4 text-center applies-header">Обращения</h1>
-    <div class="accordion accordion-flush" id="our_accordion">
+  <h1 class="mt-4 text-center applies-header">Обращения</h1>
+  <div class="bg-white accordion-wrapper  ">
+    <div class="accordion accordion-flush " id="our_accordion">
       <div class="accordion-item mb-2">
         <h2 class="accordion-header" id="flush-heading1">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
@@ -95,6 +95,7 @@
                <span class="user-apply pt-3">
                 <strong>Ваше обращение: </strong>
                 <span class="user-apply-text">
+                  JHDJFKDS  JKFBKSJDFBKJSDFBJSKDN FKSJDFBKJ SDFKJSD FKJSDNF JSDNFKJS NFKJ DNF KJSDNF KSDJFNSDK FNDSKJ FMN
                   JHDJFKDS  JKFBKSJDFBKJSDFBJSKDN FKSJDFBKJ SDFKJSD FKJSDNF JSDNFKJS NFKJ DNF KJSDNF KSDJFNSDK FNDSKJ FMN
                 </span>
               </span>
@@ -165,7 +166,8 @@ export default {
 }
 .accordion{
   border-radius: 13px !important;
-
+  max-width: 900px !important;
+  margin: 0 auto;
 }
 .accordion-header{
   border-radius: 13px !important;
