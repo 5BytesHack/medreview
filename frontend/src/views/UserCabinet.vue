@@ -17,9 +17,9 @@
       </div>
     </div>
     <div class="col mt-2 text-end pe-4">
-      <a href="">
+      <router-link to="/change_profile">
         <img src="../svg/_icons.svg" alt="">
-      </a>
+      </router-link>
     </div>
   </div>
   <div class="bg-white accordion-wrapper">

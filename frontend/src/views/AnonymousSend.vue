@@ -27,7 +27,7 @@
       </div>
       <div class="flex-grow-1 d-flex justify-content-center align-items-end">
         <div class="text-center w-100">
-          <button type="button" class="w-75 btn  align-self-center py-2"><strong>Отправить</strong></button>
+          <button type="button" class="w-75 btn align-self-center py-2"><strong>Отправить</strong></button>
         </div>
       </div>
     </form>

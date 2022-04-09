@@ -1,16 +1,20 @@
 <template>
-  <div class="home container d-flex flex-column">
-    <div class="about-info flex-grow-1 mt-3">
+  <div class="home container d-flex flex-column py-3">
+    <div class="about-info flex-grow-1">
       hello
     </div>
 
-    <div class="choose-btns d-flex flex-column flex-grow-1 mt-2 p-3">
-      <div class="flex-grow-1 d-flex align-items-center">
-        <p class="choose-title text-center mt-3">Выберите одно из возможных действий</p>
+    <div class="choose-btns flex-column flex-grow-1">
+      <div class="align-items-center justify-content-center">
+        <p class="choose-title text-center">Выберите одно из возможных действий</p>
       </div>
-      <div class="d-flex flex-grow-1 flex-column justify-content-center align-items-center">
-        <router-link to="/anon_send">Создать обращение</router-link>
-        <router-link to="/">Рейтинг клиник</router-link><!-- rating -->
+      <div class="flex-column justify-content-center align-items-center">
+        <button type="button" class="w-75 btn align-self-center py-2">
+          <router-link id="makeApplyLink" to="/anon_send"><strong>Создать обращение</strong></router-link>
+        </button>
+        <button type="button" class="w-75 btn align-self-center py-2">
+          <router-link id="clinicRatingLink" to="/"><strong>Рейтинг клиник</strong></router-link>
+        </button><!-- rating -->
       </div>
     </div>
   </div>
@@ -53,14 +57,12 @@ export default {
   height: 100%;
 }
 .about-info{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.65);
     border-radius: 39px;
-    opacity: 0.65;
   }
 .choose-btns{
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.65);
   border-radius: 39px;
-  opacity: 0.65;
 }
 .choose-title{
   font-family: 'Inter';
@@ -69,5 +71,21 @@ export default {
   font-size: 1.75rem;
   line-height: 2.118rem;
   color: #24958C;
+}
+
+.btn{
+  background-color: #FFBD5E;
+  color: white;
+  border-radius: 13px;
+  font-size: 1.25rem;
+  letter-spacing: 0.1rem;
+}
+#makeApplyLink{
+  color: white;
+  text-decoration: none;
+}
+#clinicRatingLink{
+  color: white;
+  text-decoration: none;
 }
 </style>
