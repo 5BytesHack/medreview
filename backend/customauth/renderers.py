@@ -11,7 +11,7 @@ class CustomUserJSONRenderer(JSONRenderer):
         token = data.get('token', None)
 
         if errors is not None:
-            return super(CustomUserJSONRenderer, self.render(data))
+            return super(CustomUserJSONRenderer, self).render(data)
 
         if token is not None and isinstance(token, bytes):
             data['token'] = token.decode('utf-8')

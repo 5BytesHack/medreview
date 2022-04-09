@@ -31,14 +31,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def token(self):
         return self._generate_jwt()
 
-
     def get_full_name(self):
-        return f'{self.last_name} {self.first_name} {self.patronymic}'
-
-
-    def get_short_name(self):
-        return f'{self.first_name} {self.patronymic}'
-
+        if self.patronymic:
+            return f'{self.last_name} {self.first_name} {self.patronymic}'
+        else:
+            return f'{self.last_name} {self.first_name}'
 
     def _generate_jwt(self):
         dt = datetime.datetime.now() + datetime.timedelta(days=7)
