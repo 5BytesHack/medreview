@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: "AnonymousSend"
+  name: "ApplySend"
 }
 </script>
 

@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     is_admin:false,
-    fio:'Hello',
+    fio:'',
     email:'',
     user_token:''
   },
@@ -36,10 +36,7 @@ export default createStore({
     }
   },
   actions: {
-    async getUsers(context){
-      const users = await (await fetch('https://jsonplaceholder.typicode.com/users')).json()
-      context.commit('setFio', users[0]['name'])
-    }
+
   },
   modules: {
   }
