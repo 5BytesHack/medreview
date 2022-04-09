@@ -1,7 +1,7 @@
 <template>
-  <div class="container d-flex flex-column w-100 h-100 py-3">
+  <div class="container d-flex flex-row w-100 h-100 py-3 justify-content-center align-items-lg-center">
     <div class="white-platform ps-4 pe-4 flex-grow-1">
-      <form action="" class="d-flex flex-column h-100 pb-3 ">
+      <form action="" class="d-flex flex-column h-100 pb-3 mt-3">
         <div class="form-group mb-2">
           <label for="emailinput" class="form-label">E-mail:</label>
           <input v-model="email" type="email" class="form-control" id="emailinput" aria-describedby="emailHelp" placeholder="email">
@@ -11,7 +11,7 @@
           <input v-model="password" type="password" class="form-control" id="newpasswordinput" aria-describedby="password" placeholder="новый пароль">
         </div>
         <div class="flex-grow-1 d-flex flex-column justify-content-end">
-          <div class="text-center w-100 mt-2">
+          <div class="text-center w-100 mt-5 mb-3">
             <button type="button" v-on:click="login" class="w-75 btn  align-self-center py-2"><strong>Войти</strong></button>
           </div>
         </div>
@@ -41,6 +41,8 @@ export default {
 .white-platform{
   background-color: rgb(255,255,255,.65);
   border-radius: 40px;
+  max-width: 600px;
+
 }
 .btn{
   background-color: #FFBD5E;
