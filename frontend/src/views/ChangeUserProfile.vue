@@ -4,11 +4,11 @@
       <form action="" class="d-flex flex-column h-100 pb-3 ">
         <div class="form-group mt-4 mb-2">
           <label for="fioinput" class="form-label">ФИО:</label>
-          <input type="email" class="form-control" id="fioinput" aria-describedby="emailHelp" placeholder="ФИО">
+          <input type="email" class="form-control" id="fioinput" aria-describedby="emailHelp" v-bind:value="fio" :placeholder="ФИО">
         </div>
         <div class="form-group mb-2">
-          <label for="emailinput" class="form-label">E-mail:</label>
-          <input type="email" class="form-control" id="emailinput" aria-describedby="emailHelp" placeholder="E-mail">
+          <label for="passwordinput" class="form-label">E-mail:</label>
+          <input type="password" class="form-control" id="passwordinput" aria-describedby="password" placeholder="Password">
         </div>
         <div class="flex-grow-1 d-flex flex-column justify-content-end">
           <div class="form-check mb-2">
@@ -32,8 +32,21 @@
 </template>
 
 <script>
+import store from "@/store";
+
 export default {
-  name: "ChangeUserProfile"
+  name: "ChangeUserProfile",
+  data(){
+    return {
+      checked: false,
+      name: 'Hello222'
+    }
+  },
+  computed:{
+    fio(){
+      return store.getters.fio;
+    }
+  }
 }
 </script>
 
