@@ -2,17 +2,17 @@
   <div class="my-body d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <a href="" class="navbar-brand">
+        <router-link to="/" class="navbar-brand">
           <img src="./img/logo_white.png" alt="">
           MedReview
-        </a>
+        </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav">
-          <li class="nav-item"><a href="" class="nav-link">Личный кабинет</a></li>
+          <li class="nav-item"><router-link to="/user_cabinet" class="nav-link">Личный кабинет</router-link></li>
         </ul>
       </div>
       </div>

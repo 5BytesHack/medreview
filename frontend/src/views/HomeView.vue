@@ -10,7 +10,7 @@
       </div>
       <div class="d-flex flex-grow-1 flex-column justify-content-center align-items-center">
         <router-link to="/anon_send">Создать обращение</router-link>
-        <router-link to="/rating">Рейтинг клиник</router-link>
+        <router-link to="/">Рейтинг клиник</router-link><!-- rating -->
       </div>
     </div>
   </div>
