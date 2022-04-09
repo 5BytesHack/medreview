@@ -22,6 +22,20 @@
       </a>
     </div>
   </div>
+  <div class="bg-white accordion-wrapper">
+    <div class="accordion accordion-flush" id="our_accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-heading1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+            Обращение 1
+          </button>
+        </h2>
+        <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#our_accordion">
+          <div class="accordion-body">Здесь должен быть какой то текст</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -42,5 +56,27 @@ export default {
 }
 .personal-data:nth-child(n) {
   color: #24958C;
+}
+.accordion-item{
+  border: 2px solid #36B3B5 !important;
+  border-radius: 39px !important;
+
+}
+.accordion-button{
+  border-radius: 39px !important;
+}
+.accordion{
+  border-radius: 39px !important;
+}
+.accordion-header{
+  border-radius: 39px !important;
+}
+.accordion-wrapper{
+  border-radius: 39px;
+}
+.accordion-button:not(.collapsed) {
+  color: white;
+  background-color: #36B3B5;
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
 }
 </style>
