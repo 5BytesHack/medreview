@@ -1,6 +1,6 @@
 <template>
   <div class="my-body d-flex flex-column h-100">
-    <nav class="navbar navbar-expand-lg navbar-dark pb-1 pt-2">
+    <nav class="navbar navbar-expand-lg navbar-dark pb-1 pt-2 justify-content-center">
       <div class="container m-1">
         <router-link to="/" class="navbar-brand d-flex flex-row">
           <img src="./img/logo_white.png" alt="">
@@ -44,7 +44,6 @@ export default {
 }
 .main-content{
   background: url("./svg/background.svg") 0 0/cover no-repeat;
-  background-repeat: no-repeat;
   background-size: 100%;
 }
 
