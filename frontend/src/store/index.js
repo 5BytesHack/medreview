@@ -7,7 +7,7 @@ export default createStore({
     fio:'',
     email:'',
     user_token:'',
-    reqURL:'https://jsonplaceholder.typicode.com/users'
+    reqURL:'http://127.0.0.1:8000/api/registration/'
   },
   getters: {
     isAdmin(state){
@@ -24,11 +24,22 @@ export default createStore({
     },
     userToken(state){
       return state.user_token
+    },
+    reqURL(state){
+      return state.reqURL
     }
   },
   mutations: {
+    setUser(state, user){
+      state.fio = user.fistname + user.lastname + user.patronymic
+      state.email = user.email
+      state.user_token = user.token
+    },
     setIsAdmin(state, is_admin){
       state.is_admin = is_admin
+    },
+    setIsLogin(state, isLogin){
+      state.isLogin = isLogin
     },
     setFio(state, fio){
       state.fio = fio
