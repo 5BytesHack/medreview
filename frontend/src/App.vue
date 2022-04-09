@@ -17,9 +17,11 @@
       </div>
       </div>
     </nav>
-    <div class="flex-grow-1 flex-shrink-1 main-content">
-      <router-view></router-view>
-    </div>
+
+      <div class="flex-grow-1 flex-shrink-1 main-content overflow-auto">
+        <router-view></router-view>
+      </div>
+
 
   </div>
 </template>
@@ -60,5 +62,4 @@ export default {
     background-size: 100%;
   }
 }
-
 </style>

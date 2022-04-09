@@ -10,7 +10,7 @@
           <div class="mb-3 user-text-wrapper">
            <span class="user-text text-wrap">
              <strong>Сообщение: </strong>
-              <span class="text-black">Прекрасная клинико, спасибо! Я конещвы ошо вигш ор шовапшо вашо  ошварпошв ароп шрвшо шваш швао ошва швар гшвар шв ровшарпшв ршва шва шова шпврвшр шав ргвашишловарп шуав</span>
+              <span class="text-black text-apply">Прекрасная клинико, спасибо! Я конещвы ошо вигш ор шовапшо вашо  ошварпошв ароп шрвшо шваш швао ошва швар гшвар шв ровшарпшв ршва шва шова шпврвшр шав ргвашишловарп шуав</span>
             </span>
           </div>
           <textarea class="form-control h-100 ps-4 pe-4 apply-input " id="applyinput" rows="3"></textarea>
@@ -83,6 +83,6 @@ export default {
   color: #24958C ;
 }
 .user-text-wrapper{
-  max-width: 600px;
+ max-width: 600px;
 }
 </style>
