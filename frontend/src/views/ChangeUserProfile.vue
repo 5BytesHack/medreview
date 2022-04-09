@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name:'AboutView'
+  name: "ChangeUserProfile"
 }
 </script>
 
