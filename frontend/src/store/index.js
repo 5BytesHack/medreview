@@ -31,7 +31,7 @@ export default createStore({
   },
   mutations: {
     setUser(state, user){
-      state.fio = user.fistname + user.lastname + user.patronymic
+      state.fio = [user.first_name,user.last_name,user.patronymic].join(' ')
       state.email = user.email
       state.user_token = user.token
     },
@@ -52,7 +52,50 @@ export default createStore({
     }
   },
   actions: {
+    async loginReq(context, user){
+      const req_opts = {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(user)
+      }
+      let response
+      let userData
+      try {
+        response = await fetch(context.getters.reqURL, req_opts)
+        userData = await response.json()
+      }catch (e){
+        console.log(e)
+        return
+      }
+      if(userData.user.token === '' || userData.user.token === null)
+        return
+      context.commit('setIsLogin', true)
+      context.commit('setIsAdmin', false)
+      context.commit('setUser', userData.user)
+    },
 
+    saveToLocal(context){
+      const user = {
+        fio : context.state.fio,
+        email : context.state.email,
+        user_token : context.state.userToken,
+        isAdmin : context.state.isAdmin,
+        isLogin : context.state.isLogin
+      }
+      console.log(user)
+      localStorage.setItem('user', JSON.stringify(user))
+    },
+
+    loadUserIfExist(context){
+      const user = JSON.parse(localStorage.getItem('user'))
+      if(user){
+        context.commit('setUser', user)
+        context.commit('setIsLogin', user.isLogin)
+        context.commit('setIsAdmin', user.isAdmin)
+      }
+    }
   },
   modules: {
   }

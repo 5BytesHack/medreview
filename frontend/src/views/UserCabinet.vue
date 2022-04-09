@@ -3,7 +3,7 @@
   <div class="d-flex mt-2 justify-content-md-center position-relative">
     <div class="profile-list mt-2 ps-4 ps-md-0 text-md-center flex-md-shrink-1">
       <div class="profile-status-wrapper ps-1 d-md-flex justify-content-center">
-        <div class="profile-status py-1  px-4 text-center mb-3 ">
+        <div v-if="isAdmin" class="profile-status py-1  px-4 text-center mb-3 ">
           <span>Сотрудник</span>
         </div>
         <div class="mt-2 text-end pe-4 position-absolute edit-btn">
@@ -16,9 +16,9 @@
         <img src="../img/Union.png" alt="">
       </div>
       <div class="personal-data ps-2">
-        <h1 class="last-name ">Ухина</h1>
-        <h1 class="second-name">Диана</h1>
-        <h1 class="first-name">Андреевна</h1>
+        <h1 class="last-name ">{{firstName}}</h1>
+        <h1 class="second-name">{{lastName}}</h1>
+        <h1 class="first-name">{{patronymic}}</h1>
       </div>
 
     </div>
@@ -128,7 +128,7 @@
 </template>
 
 <script>
-
+import store from "@/store";
 export default {
   name: "UserCabinet",
   data(){
@@ -137,8 +137,20 @@ export default {
     }
   },
   computed:{
-    fio(){
-      return '';
+    firstName(){
+      const first_name = store.getters.fio?.split(' ')[0];
+      return first_name === null?'':first_name
+    },
+    lastName(){
+      const last_name = store.getters.fio?.split(' ')[1];
+      return last_name === null?'':last_name
+    },
+    patronymic(){
+      const patronymic = store.getters.fio?.split(' ')[2];
+      return patronymic === null?'':patronymic
+    },
+    isAdmin(){
+      return store.getters.isAdmin;
     }
   }
 }

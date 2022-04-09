@@ -42,9 +42,6 @@ export default {
     fio(){
       return store.getters.fio;
     },
-    password(){
-      return store.getters.fio;
-    },
   }
 }
 </script>

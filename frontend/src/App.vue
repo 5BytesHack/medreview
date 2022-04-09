@@ -12,7 +12,7 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav">
-          <li class="nav-item"><span v-on:click="goToUserCabinetIfLogin" class="nav-link pb-0 pt-md-4 h5 m-0">Личный кабинет</span></li>
+          <li class="nav-item d-inline-flex"><span id="user-cabinet-link" v-on:click="goToUserCabinetIfLogin" class="nav-link pb-0 pt-md-4 h5 m-0">Личный кабинет</span></li>
         </ul>
       </div>
       </div>
@@ -32,6 +32,9 @@ export default {
     return{
 
     }
+  },
+  created(){
+    store.dispatch('loadUserIfExist')
   },
   computed:{
     fio(){
@@ -54,6 +57,9 @@ export default {
 
 <style scoped>
 @import'bootstrap/dist/css/bootstrap.min.css';
+#user-cabinet-link:hover{
+  cursor: pointer;
+}
 .navbar{
   background-color: #2DB5AB;
 }

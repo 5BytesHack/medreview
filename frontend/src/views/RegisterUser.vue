@@ -41,7 +41,6 @@
 
 <script>
 import store from "@/store";
-import {nextTick} from "vue";
 export default {
   name: "RegisterUser",
   data(){
@@ -53,12 +52,18 @@ export default {
     }
   },
   methods:{
-    async register(){
+    register(){
       const fio_split = this.fio.split(' ')
-      const first_name = fio_split[0]
-      const last_name = fio_split[1]
+      let first_name = ''
+      let last_name = ''
       let patronymic = null
-      if(fio_split.length == 3) {
+      if(fio_split[0]) {
+        first_name = fio_split[0]
+      }
+      if(fio_split[1]) {
+        last_name = fio_split[1]
+      }
+      if(fio_split[2]) {
         patronymic = fio_split[2]
       }
       console.log(first_name, last_name, patronymic)
@@ -71,29 +76,17 @@ export default {
           password:this.password
         }
       }
-      const req_opts = {
-        method: 'POST',
-        headers:{
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(req_body)
+      store.dispatch('loginReq', req_body)
+      //store.dispatch('saveToLocal')
+      const user = {
+        fio : [first_name,last_name,patronymic].join(' '),
+        email : this.email,
+        user_token : store.getters.userToken,
+        isAdmin : false,
+        isLogin : true
       }
-      console.log(req_opts)
-      let response
-      let userData
-      try {
-        response = await fetch(store.getters.reqURL, req_opts)
-        userData = await response.json()
-      }catch (e){
-        console.log(e)
-        return
-      }
-      if(userData.user.token === '' || userData.user.token === null)
-        return
-      store.commit('setIsLogin', true)
-      store.commit('setIsAdmin', false)
-      store.commit('setUser', userData)
-      nextTick(()=> console.log(store.getters.fio + store.getters.email + store.getters.isLogin + store.getters.userToken + store.getters.isAdmin))
+      console.log(user)
+      localStorage.setItem('user', JSON.stringify(user))
     }
   }
 }
