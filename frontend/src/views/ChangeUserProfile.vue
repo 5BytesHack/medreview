@@ -33,7 +33,13 @@
 
 <script>
 export default {
-  name: "ChangeUserProfile"
+  name: "ChangeUserProfile",
+  data(){
+    return {
+      checked: false,
+    }
+  },
+
 }
 </script>
 
