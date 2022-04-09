@@ -1,20 +1,20 @@
 <template>
-  <div class="home container d-flex flex-column py-3">
-    <div class="about-info flex-grow-1">
-      hello
+  <div class="home container d-flex flex-column my-3">
+    <div class="about-info">
+      <p class="choose-title text-center py-3 px-2">Добро пожаловать на сайт MedReview! Здесь вы модете создать обращение по работе медицинских учреждений. Мы ценим ваше мнение!</p>
     </div>
 
-    <div class="choose-btns flex-column flex-grow-1">
-      <div class="align-items-center justify-content-center">
+    <div class="choose-btns d-flex flex-column mt-2 justify-content-around">
+      <div class="pt-2">
         <p class="choose-title text-center">Выберите одно из возможных действий</p>
       </div>
-      <div class="flex-column justify-content-center align-items-center">
-        <button type="button" class="w-75 btn align-self-center py-2">
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <button type="button" class="w-75 btn py-2 my-3">
           <router-link id="makeApplyLink" to="/anon_send"><strong>Создать обращение</strong></router-link>
         </button>
-        <button type="button" class="w-75 btn align-self-center py-2">
-          <router-link id="clinicRatingLink" to="/rating"><strong>Рейтинг клиник</strong></router-link>
-        </button>
+        <button type="button" class="w-75 btn py-2 mb-3">
+          <router-link id="clinicRatingLink" to="/"><strong>Рейтинг клиник</strong></router-link>
+        </button><!-- rating -->
       </div>
     </div>
   </div>

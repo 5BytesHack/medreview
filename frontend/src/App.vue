@@ -1,10 +1,10 @@
 <template>
   <div class="my-body d-flex flex-column h-100">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark pb-0 pt-3">
       <div class="container">
-        <router-link to="/" class="navbar-brand">
+        <router-link to="/" class="navbar-brand d-flex flex-row">
           <img src="./img/logo_white.png" alt="">
-          MedReview
+          <h1 class="m-0 pt-2">MedReview</h1>
         </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav">
-          <li class="nav-item"><router-link to="/user_cabinet" class="nav-link">Личный кабинет</router-link></li>
+          <li class="nav-item"><router-link to="/user_cabinet" class="nav-link pb-0 pt-4 h5 m-0">Личный кабинет</router-link></li>
         </ul>
       </div>
       </div>
