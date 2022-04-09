@@ -3,6 +3,7 @@ from django.shortcuts import render
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView, Response
+from rest_framework import status
 
 from .serializers import ReviewSerializer, Review
 
@@ -83,3 +84,4 @@ class CreateReviewAPIView(APIView):
         serializer = self.serializer_class(data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
