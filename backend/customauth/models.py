@@ -16,7 +16,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='Адрес электронной почты', unique=True)
     first_name = models.CharField(verbose_name='Имя', max_length=40)
     last_name = models.CharField(verbose_name='Фамилия', max_length=40)
-    patronymic = models.CharField(verbose_name='Отчество', max_length=40)
+    patronymic = models.CharField(verbose_name='Отчество', max_length=40, blank=True)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
@@ -31,14 +31,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def token(self):
         return self._generate_jwt()
 
-
     def get_full_name(self):
-        return f'{self.last_name} {self.first_name} {self.patronymic}'
-
-
-    def get_short_name(self):
-        return f'{self.first_name} {self.patronymic}'
-
+        if self.patronymic:
+            return f'{self.last_name} {self.first_name} {self.patronymic}'
+        else:
+            return f'{self.last_name} {self.first_name}'
 
     def _generate_jwt(self):
         dt = datetime.datetime.now() + datetime.timedelta(days=7)
