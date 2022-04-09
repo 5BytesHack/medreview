@@ -58,8 +58,19 @@
 </template>
 
 <script>
+
 export default {
-  name: "UserCabinet"
+  name: "UserCabinet",
+  data(){
+    return{
+
+    }
+  },
+  computed:{
+    fio(){
+      return '';
+    }
+  }
 }
 </script>
 

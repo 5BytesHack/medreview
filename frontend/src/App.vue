@@ -30,6 +30,12 @@ export default {
     return{
 
     }
+  },
+  computed:{
+    fio(){
+      console.log(this.$store.getters.fio)
+      return this.$store.getters.fio;
+    }
   }
 }
 </script>

@@ -15,17 +15,23 @@
         <button type="button" class="w-75 btn py-2 mb-3">
           <router-link id="clinicRatingLink" to="/"><strong>Рейтинг клиник</strong></router-link>
         </button><!-- rating -->
+        <button v-on:click="test" class="btn">ТЕСТ</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
+import store from "@/store";
 export default {
   name: 'HomeView',
   components: {
 
+  },
+  methods:{
+    test(){
+      store.dispatch('getUsers')
+    }
   }
 }
 </script>

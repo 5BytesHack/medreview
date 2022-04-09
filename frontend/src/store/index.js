@@ -3,22 +3,22 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     is_admin:false,
-    fio:'',
+    fio:'Hello',
     email:'',
     user_token:''
   },
   getters: {
-    isAdmin(){
-      return this.state.is_admin
+    isAdmin(state){
+      return state.is_admin
     },
-    fio(){
-      return this.state.fio
+    fio(state){
+      return state.fio
     },
-    email(){
-      return this.state.email
+    email(state){
+      return state.email
     },
-    userToken(){
-      return this.state.user_token
+    userToken(state){
+      return state.user_token
     }
   },
   mutations: {
@@ -36,6 +36,10 @@ export default createStore({
     }
   },
   actions: {
+    async getUsers(context){
+      const users = await (await fetch('https://jsonplaceholder.typicode.com/users')).json()
+      context.commit('setFio', users[0]['name'])
+    }
   },
   modules: {
   }
