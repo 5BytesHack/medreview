@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Review
-from classifier_model import classify
+from .classifier_model import classify
+
 
 class ReviewSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())

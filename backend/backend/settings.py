@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tensorflow',
     'rest_framework',
     'jwt',
     'customauth',
