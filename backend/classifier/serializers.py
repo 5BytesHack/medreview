@@ -1,36 +1,41 @@
 from rest_framework import serializers
-from .models import Review
+from .models import Review, Answer
 from .classifier_model import classify
+from customauth.serializers import CustomUserSerializer
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    # author = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    author = CustomUserSerializer()
 
     class Meta:
         model = Review
         fields = ['author', 'fio', 'mail', 'text']
 
     def create(self, validated_data):
-        reviewed = classify(validated_data['text'])
+        title = classify(validated_data['text'])
         return Review.objects.create(
             author=validated_data['author'],
             fio=validated_data['fio'],
             mail=validated_data['mail'],
             text=validated_data['text'],
-            reviewed=reviewed
+            title=title
         )
 
     def update(self, instance, validated_data):
+        pass
 
-        instance.pop('reviewed')
 
-        for key, value in instance.items():
-            setattr(instance, key, value)
+class AnswerSerializer(serializers.ModelSerializer):
 
-        if validated_data:
-            setattr(instance, 'reviewed', True)
-        else:
-            setattr(instance, 'reviewed', False)
+    review = ReviewSerializer(
+        read_only=True
+    )
 
-        instance.save()
+    class Meta:
+        model = Answer
+        fields = ['text', 'review']
 
+    def create(self, validated_data):
+        return Answer.objects.create(
+
+        )
