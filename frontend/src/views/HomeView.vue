@@ -13,8 +13,8 @@
           <router-link id="makeApplyLink" to="/anon_send"><strong>Создать обращение</strong></router-link>
         </button>
         <button type="button" class="w-75 btn align-self-center py-2">
-          <router-link id="clinicRatingLink" to="/"><strong>Рейтинг клиник</strong></router-link>
-        </button><!-- rating -->
+          <router-link id="clinicRatingLink" to="/rating"><strong>Рейтинг клиник</strong></router-link>
+        </button>
       </div>
     </div>
   </div>
