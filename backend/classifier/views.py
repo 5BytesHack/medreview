@@ -81,7 +81,8 @@ class CreateReviewAPIView(APIView):
 
     def post(self, request):
         data = request.data.get('review', {})
-        serializer = self.serializer_class(data)
+        serializer = self.serializer_class(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
