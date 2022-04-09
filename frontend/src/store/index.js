@@ -3,22 +3,27 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     is_admin:false,
+    isLogin:false,
     fio:'',
     email:'',
-    user_token:''
+    user_token:'',
+    reqURL:'https://jsonplaceholder.typicode.com/users'
   },
   getters: {
-    isAdmin(){
-      return this.state.is_admin
+    isAdmin(state){
+      return state.is_admin
     },
-    fio(){
-      return this.state.fio
+    isLogin(state){
+      return state.isLogin
     },
-    email(){
-      return this.state.email
+    fio(state){
+      return state.fio
     },
-    userToken(){
-      return this.state.user_token
+    email(state){
+      return state.email
+    },
+    userToken(state){
+      return state.user_token
     }
   },
   mutations: {
@@ -36,6 +41,7 @@ export default createStore({
     }
   },
   actions: {
+
   },
   modules: {
   }
