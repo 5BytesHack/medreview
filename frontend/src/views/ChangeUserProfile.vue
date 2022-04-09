@@ -36,14 +36,15 @@ export default {
   data(){
     return {
       checked: false,
-      name: 'Hello222'
     }
   },
   computed:{
     fio(){
       return store.getters.fio;
     },
-
+    password(){
+      return store.getters.fio;
+    },
   }
 }
 </script>
@@ -65,17 +66,8 @@ export default {
   border-radius: 39px;
   height: 46px;
 }
-.form-control, .form-check-input{
+.form-control{
   border-width: 2px;
-  border-color: #36B3B5;
-}
-.form-check-input{
-  border-radius: 0 !important;
-  height: 30px;
-  width: 30px;
-}
-.form-check-input:checked {
-  background-color: #36B3B5;
   border-color: #36B3B5;
 }
 .white-platform{

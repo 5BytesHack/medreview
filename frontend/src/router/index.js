@@ -5,6 +5,8 @@ import ApplySend from "@/views/ApplySend";
 import UserCabinet from "@/views/UserCabinet";
 import ChangeUserProfile from "@/views/ChangeUserProfile";
 import ApplyDetails from "@/views/ApplyDetails";
+import RegisterUser from "@/views/RegisterUser";
+import SignInUser from "@/views/SignInUser";
 
 
 const routes = [
@@ -57,7 +59,25 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     //component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
     component: ApplyDetails
-  }
+  },
+  {
+    path: '/user_register',
+    name: 'user_register',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    //component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: RegisterUser
+  },
+  {
+    path: '/user_signin',
+    name: 'user_signin',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    //component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: SignInUser
+  },
 ]
 
 const router = createRouter({

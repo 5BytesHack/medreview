@@ -12,7 +12,7 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav">
-          <li class="nav-item"><router-link to="/user_cabinet" class="nav-link pb-0 pt-md-4 h5 m-0">Личный кабинет</router-link></li>
+          <li class="nav-item"><span v-on:click="goToUserCabinetIfLogin" class="nav-link pb-0 pt-md-4 h5 m-0">Личный кабинет</span></li>
         </ul>
       </div>
       </div>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import store from "@/store";
 export default {
   data(){
     return{
@@ -35,6 +36,16 @@ export default {
     fio(){
       console.log(this.$store.getters.fio)
       return this.$store.getters.fio;
+    }
+  },
+  methods:{
+    goToUserCabinetIfLogin(){
+      if(store.getters.isLogin){
+        this.$router.push('/user_cabinet')
+      }
+      else{
+        this.$router.push('/user_signin')
+      }
     }
   }
 }

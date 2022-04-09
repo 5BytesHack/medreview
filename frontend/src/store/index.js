@@ -3,13 +3,18 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     is_admin:false,
+    isLogin:false,
     fio:'',
     email:'',
-    user_token:''
+    user_token:'',
+    reqURL:'https://jsonplaceholder.typicode.com/users'
   },
   getters: {
     isAdmin(state){
       return state.is_admin
+    },
+    isLogin(state){
+      return state.isLogin
     },
     fio(state){
       return state.fio
