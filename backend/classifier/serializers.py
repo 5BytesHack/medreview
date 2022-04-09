@@ -4,16 +4,16 @@ from .classifier_model import classify
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    # author = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Review
-        fields = ['user', 'fio', 'mail', 'text']
+        fields = ['author', 'fio', 'mail', 'text']
 
     def create(self, validated_data):
         reviewed = classify(validated_data['text'])
         return Review.objects.create(
-            author=self.user,
+            author=validated_data['author'],
             fio=validated_data['fio'],
             mail=validated_data['mail'],
             text=validated_data['text'],
