@@ -70,4 +70,16 @@ class AllReviewsAPIView(APIView):
             'user': user,
             'reviews': reviews
         }
-        return Response({'reviews': reviews})
+        return Response(ctx)
+
+
+class CreateReviewAPIView(APIView):
+    renderer_classes = [JSONRenderer]
+    permission_classes = (AllowAny,)
+    serializer_class = ReviewSerializer
+
+    def post(self, request):
+        data = request.data.get('review', {})
+        serializer = self.serializer_class(data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
