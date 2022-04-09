@@ -1,7 +1,7 @@
 <template>
   <div class="my-body d-flex flex-column h-100">
-    <nav class="navbar navbar-expand-lg navbar-dark pb-0 pt-3">
-      <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark pb-1 pt-2 justify-content-center">
+      <div class="container m-1">
         <router-link to="/" class="navbar-brand d-flex flex-row">
           <img src="./img/logo_white.png" alt="">
           <h1 class="m-0 pt-2">MedReview</h1>
@@ -12,23 +12,41 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav">
-          <li class="nav-item"><router-link to="/user_cabinet" class="nav-link pb-0 pt-4 h5 m-0">Личный кабинет</router-link></li>
+          <li class="nav-item"><span v-on:click="goToUserCabinetIfLogin" class="nav-link pb-0 pt-md-4 h5 m-0">Личный кабинет</span></li>
         </ul>
       </div>
       </div>
     </nav>
-    <div class="flex-grow-1 flex-shrink-1 main-content">
-      <router-view></router-view>
-    </div>
+      <div class="flex-grow-1 flex-shrink-1 main-content overflow-auto">
+        <router-view></router-view>
+      </div>
+
 
   </div>
 </template>
 
 <script>
+import store from "@/store";
 export default {
   data(){
     return{
 
+    }
+  },
+  computed:{
+    fio(){
+      console.log(this.$store.getters.fio)
+      return this.$store.getters.fio;
+    }
+  },
+  methods:{
+    goToUserCabinetIfLogin(){
+      if(store.getters.isLogin){
+        this.$router.push('/user_cabinet')
+      }
+      else{
+        this.$router.push('/user_signin')
+      }
     }
   }
 }
@@ -43,8 +61,14 @@ export default {
   background-color: #2DB5AB;
 }
 .main-content{
-  background-image: url("./svg/background.svg");
-  background-repeat: no-repeat;
+  background: url("./svg/background.svg") 0 0/cover no-repeat;
   background-size: 100%;
+}
+
+@media (min-width: 768px) {
+  .main-content{
+    background: url("./svg/background_1024.svg") 0 0/cover no-repeat;
+    background-size: 100%;
+  }
 }
 </style>
