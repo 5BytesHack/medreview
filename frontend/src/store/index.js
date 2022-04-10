@@ -7,7 +7,7 @@ export default createStore({
     fio:'',
     email:'',
     user_token:'',
-    reqURL:'http://127.0.0.1:8000/api/registration/'
+    reqURL:'http://127.0.0.1:8000/api/'
   },
   getters: {
     isAdmin(state){
@@ -27,7 +27,7 @@ export default createStore({
     },
     reqURL(state){
       return state.reqURL
-    }
+    },
   },
   mutations: {
     setUser(state, user){
@@ -49,10 +49,13 @@ export default createStore({
     },
     setUserToken(state, user_token){
       state.user_token = user_token
+    },
+    setIsDeclined(state, value){
+      state.isDeclined = value
     }
   },
   actions: {
-    async loginReq(context, user){
+    async registerReq(context, user){
       const req_opts = {
         method: 'POST',
         headers:{
@@ -63,20 +66,40 @@ export default createStore({
       let response
       let userData
       try {
-        response = await fetch(context.getters.reqURL, req_opts)
+        response = await fetch(context.getters.reqURL+'registration/', req_opts)
         userData = await response.json()
-        console.log('UserData ',userData)
+        //console.log('UserData ',userData)
       }catch (e){
         console.log(e)
-        return
-      }
-      if(userData.user.token === '' || userData.user.token === null) {
         return
       }
       context.commit('setIsLogin', true)
       context.commit('setIsAdmin', false)
       context.commit('setFio', userData.user.first_name)
       context.commit('setUser', userData.user)
+    },
+
+    async getUserInfo(context) {
+      const req_opts = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          'Authorization': 'Token '+ context.getters.userToken
+        },
+      }
+      let response
+      let userData
+      try{
+        response = await fetch(context.getters.reqURL+'user/', req_opts)
+        userData = await response.json()
+      }catch (e){
+        console.log(e)
+        return
+      }
+      context.commit('setIsAdmin', userData.user.is_staff)
+      context.commit('setFio', userData.user.first_name + userData.user.last_name + userData.user.patronymic)
+      context.commit('setUser', userData.user)
+
     },
 
     saveToLocal(context){
@@ -103,6 +126,54 @@ export default createStore({
         context.state.is_admin = user.isAdmin
         //context.commit('setIsLogin', user.isLogin)
         //context.commit('setIsAdmin', user.isAdmin)
+      }
+    },
+
+    async logInReq(context, user){
+      const req_opts = {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(user)
+      }
+      let response
+      let userData
+      try {
+        response = await fetch(context.getters.reqURL+'login/', req_opts)
+        userData = await response.json()
+        console.log('UserData ',userData)
+      }catch (e){
+        console.log(e)
+        return
+      }
+      context.commit('setIsLogin', true)
+      context.commit('setIsAdmin', false)
+      context.commit('setEmail', userData.user.email)
+      context.commit('setUserToken', userData.user.token)
+      //context.commit('setUser', userData.user)
+    },
+
+    async sendApply(context, req_body){
+      const req_opts = {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(req_body)
+      }
+      let response
+      try {
+        response = await fetch(context.getters.reqURL+'create_review/', req_opts)
+        if(response.ok){
+          this.$router.push('/')
+        }
+        else{
+          alert("Что-то пошло не так")
+        }
+      }catch (e){
+        console.log(e)
+        return
       }
     }
   },

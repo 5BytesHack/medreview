@@ -1,6 +1,7 @@
 <template>
   <div class="container d-flex flex-column w-100 h-100 py-3">
     <div class="white-platform ps-4 pe-4 flex-grow-1">
+      <p v-if="isDeclined" style="color:red">Ошибка регистрации</p>
       <form action="" class="d-flex flex-column h-100 pb-3 ">
         <div class="form-group mt-4 mb-2">
           <label for="fioinput" class="form-label" style="font-family: 'Inter';font-weight: 700">ФИО:</label>
@@ -51,6 +52,11 @@ export default {
       password:''
     }
   },
+  computed:{
+    isDeclined(){
+      return store.getters.isDeclined
+    }
+  },
   methods:{
     async register(){
       const fio_split = this.fio.split(' ')
@@ -76,9 +82,12 @@ export default {
           password:this.password
         }
       }
-      await store.dispatch('loginReq', req_body)
+      await store.dispatch('registerReq', req_body)
       //console.log('URL', this.$store.getters(''))
-      await store.dispatch('saveToLocal')
+      if(store.getters.isLogin) {
+        await store.dispatch('saveToLocal')
+        this.$router.push('/user_cabinet')
+      }
     }
   }
 }

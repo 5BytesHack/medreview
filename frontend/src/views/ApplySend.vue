@@ -2,22 +2,22 @@
 <div class="container w-100 h-100 py-4">
   <div class="white-platform ps-4 pe-4 ">
     <form action="" class="d-flex flex-column h-100 pb-3 ">
-      <div class="form-group mt-4 mb-2 ">
+      <div v-if="isLogin" class="form-group mt-4 mb-2 ">
         <label style="font-family: 'Inter';font-weight: 700" for="fioinput" class="form-label">ФИО:</label>
-        <input style="font-family: 'Inter';font-weight: 400" type="email" class="form-control" id="fioinput" aria-describedby="emailHelp" placeholder="Введите ФИО">
+        <input v-model="fio" style="font-family: 'Inter';font-weight: 400" type="email" class="form-control" id="fioinput" aria-describedby="emailHelp" placeholder="Введите ФИО">
       </div>
-      <div class="form-group mb-2">
+      <div v-if="isLogin" class="form-group mb-2">
         <label style="font-family: 'Inter';font-weight: 700" for="emailinput" class="form-label">E-mail:</label>
-        <input style="font-family: 'Inter';font-weight: 400" type="email" class="form-control" id="emailinput" aria-describedby="emailHelp" placeholder="Введите Email">
+        <input v-model="email" style="font-family: 'Inter';font-weight: 400" type="email" class="form-control" id="emailinput" aria-describedby="emailHelp" placeholder="Введите Email">
       </div>
       <div class="form-group mb-2">
         <label style="font-family: 'Inter';font-weight: 700" for="applyinput" class="form-label">Обращение:</label>
-        <textarea style="font-family: 'Inter';font-weight: 400" class="form-control h-100 ps-4 pe-4 apply-input" id="applyinput" rows="3"></textarea>
+        <textarea v-model="text" style="font-family: 'Inter';font-weight: 400" class="form-control h-100 ps-4 pe-4 apply-input" id="applyinput" rows="3"></textarea>
       </div>
       <div class="form-check mb-2">
         <div class="d-flex flex-row align-items-center ">
           <div class="me-3">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <input v-model="checked" type="checkbox" class="form-check-input" id="exampleCheck1">
           </div>
           <div class="">
             <label class="form-check-label form-label pt-2" for="exampleCheck1" style="font-family: 'Inter';font-weight: 700">
@@ -27,7 +27,7 @@
       </div>
       <div class="flex-grow-1 d-flex justify-content-center align-items-end">
         <div class="text-center w-100">
-          <button style="font-family: 'Inter';font-weight: 400" type="button" class=" btn align-self-center py-2"><strong>Отправить</strong></button>
+          <button v-on:click="sendApply" style="font-family: 'Inter';font-weight: 400" type="button" class=" btn align-self-center py-2"><strong>Отправить</strong></button>
         </div>
       </div>
     </form>
@@ -36,8 +36,62 @@
 </template>
 
 <script>
+import store from "@/store";
+
 export default {
-  name: "ApplySend"
+  name: "ApplySend",
+  data() {
+    return {
+      fio: '',
+      email: '',
+      text: '',
+      checked: false,
+    }
+  },
+  methods: {
+    sendApply() {
+      const req_body = {
+        review: {
+          author: {
+            email:'',
+            first_name:'',
+            last_name:'',
+            patronymic:'',
+            is_staff:'',
+            token:''
+          }
+        },
+        fio: this.fio,
+        email: this.email,
+        text: this.text
+      }
+      if (store.getters.isLogin) {
+        const fio = store.getters.fio.split(' ')
+        req_body.review.author.email = store.getters.email
+        req_body.review.author.first_name = fio[0]
+        req_body.review.author.last_name = fio[1]
+        if (fio[2]) {
+          req_body.review.author.patronymic = fio[2]
+          req_body.review.author.is_staff = store.getters.isAdmin
+          req_body.review.author.token = store.getters.userToken
+
+          req_body.review.fio = store.getters.fio
+          req_body.review.email = store.getters.email
+          req_body.review.text = this.text
+        }
+        else{
+          req_body.review.author = null
+        }
+        console.log('req_body ', req_body)
+      }
+      store.dispatch('sendApply', req_body)
+    },
+    computed: {
+      isLogin() {
+        return store.getters.isLogin;
+      }
+    }
+  }
 }
 </script>
 

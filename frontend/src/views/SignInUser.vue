@@ -22,17 +22,31 @@
 </template>
 
 <script>
+import store from "@/store";
+
 export default {
   name: "SignInUser",
   data(){
     return{
-      fio:'',
       email:'',
       password:''
     }
   },
   methods:{
-
+    async login(){
+      const req_body = {
+        user:{
+          email:this.email,
+          password:this.password
+        }
+      }
+      await store.dispatch('logInReq', req_body)
+      if(store.getters.isLogin) {
+        await store.dispatch('getUserInfo')
+        await store.dispatch('saveToLocal')
+        this.$router.push('/user_cabinet')
+      }
+    }
   }
 }
 </script>

@@ -39,14 +39,15 @@ export default {
   computed:{
     shortFio() {
       if (store.getters.isLogin) {
-        const fio = store.getters.fio.split(' ');
+        const fio = store.getters.fio;
+        const fio_split = fio.split(' ')
         let patronymic = ' ';
-        if (fio[2]) {
-          patronymic = fio[2]
+        if (fio_split[2]) {
+          patronymic = fio_split[2]
         }
         let shortFio = ''
-        if(fio) {
-          shortFio = fio[0] + " " + fio[1].charAt(0) + '.' + patronymic.charAt(0) + '.';
+        if(fio_split && fio_split[0] !== '') {
+          shortFio = fio_split[0] + " " + fio_split[1].charAt(0) + '.' + patronymic.charAt(0) + '.';
         }
         return shortFio;
       }

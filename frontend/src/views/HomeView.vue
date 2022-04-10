@@ -6,16 +6,16 @@
 
     <div class="choose-btns d-flex flex-column mt-2 justify-content-center flex-grow-1">
       <div class="pt-2">
-        <p style="font-family: 'Inter';font-weight: 700" class="choose-title text-center">Выберите одно из возможных действий</p>
+        <p style="font-family: 'Inter';font-weight: 700" class="choose-title text-center">Хотите о чём-нибудь сообщить?</p>
       </div>
       <div class="d-flex flex-column align-items-center justify-content-center  ">
         <div class="btn-container d-flex flex-column">
           <button type="button" class=" btn py-2 my-3">
             <router-link id="makeApplyLink" to="/apply_send"><strong>Создать обращение</strong></router-link>
           </button>
-          <button type="button" class=" btn py-2 mb-3">
+          <!--<button type="button" class=" btn py-2 mb-3">
             <router-link id="clinicRatingLink" to="/"><strong>Рейтинг клиник</strong></router-link>
-          </button>
+          </button>-->
         </div>
       </div>
     </div>
