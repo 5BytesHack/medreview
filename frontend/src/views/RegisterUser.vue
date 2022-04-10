@@ -86,6 +86,27 @@ export default {
 
 <style scoped>
 @import'bootstrap/dist/css/bootstrap.min.css';
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-style: normal;
+  src:local('Inter'),
+  url('../fonts/Inter-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-style: normal;
+  src:local('Inter'),
+  url('../fonts/Inter-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: normal;
+  src:local('Inter'),
+  url("../fonts/Inter-Black.ttf") format('truetype');
+}
 .white-platform{
   background-color: rgb(255,255,255,.65);
   border-radius: 40px;

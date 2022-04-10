@@ -27,7 +27,7 @@
     </div>
 
   </div>
-  <h1 class="mt-4 text-center applies-header">Обращения</h1>
+  <h1 style="font-family: 'Inter';font-weight: 900" class="mt-4 text-center applies-header">Обращения</h1>
 
   <div class="bg-white accordion-wrapper">
     <div class="mb-3">
@@ -39,15 +39,16 @@
         <h2 class="accordion-header" id="flush-heading1">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
             <span class="m-0 pe-4 apply-num">#1:</span>
-            <span class=" m-0 text-truncate apply-header">Здесь должен быть какой то текст</span>
-            <span class="flex-grow-1 text-end px-3">
+            <span style="font-family: 'Inter';font-weight: 400" class=" m-0 text-truncate apply-header">Здесь должен быть какой то текст</span>
+            <span style="font-family: 'Inter';font-weight: 400" class="flex-grow-1 text-end px-3">
               <img src="../svg/clock.svg" alt="" class="status-img">
             </span>
           </button>
         </h2>
         <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#our_accordion">
-          <div class="accordion-body">
-            <span class="pb-1 text-wrap text-wrapper"><strong>Дата создания обращения:</strong>
+          <div style="font-family: 'Inter';font-weight: 400" class="accordion-body">
+            <span class="pb-1 text-wrap text-wrapper">
+              <strong>Дата создания обращения:</strong>
               <span class="date-text">
                 25.08.2019
               </span>
@@ -177,6 +178,27 @@ export default {
 
 <style scoped>
 @import'bootstrap/dist/css/bootstrap.min.css';
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-style: normal;
+  src:local('Inter'),
+  url('../fonts/Inter-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-style: normal;
+  src:local('Inter'),
+  url('../fonts/Inter-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: normal;
+  src:local('Inter'),
+  url("../fonts/Inter-Black.ttf") format('truetype');
+}
 .profile-status{
   background-color: #FDA82E;
   border-radius: 40px;
