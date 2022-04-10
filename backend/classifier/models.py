@@ -14,6 +14,9 @@ class Review(models.Model):
     title = models.BooleanField(verbose_name='Тема обращения')
     date = models.DateField(verbose_name='Дата обращения', auto_now=True)
 
+    def get_email(self):
+        return self.mail
+
 
 class Answer(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
