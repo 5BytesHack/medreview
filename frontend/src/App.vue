@@ -12,7 +12,7 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav">
-          <li class="nav-item d-inline-flex"><span id="user-cabinet-link" v-on:click="goToUserCabinetIfLogin" class="nav-link text-nowrap pb-0 pt-md-4 h5 m-0">Личный кабинет {{'('+ shortFio +')'}}</span></li>
+          <li class="nav-item d-inline-flex"><span id="user-cabinet-link" v-on:click="goToUserCabinetIfLogin" class="nav-link text-nowrap pb-0 pt-md-4 h5 m-0">Личный кабинет <span v-if="isLogin">{{'('+ shortFio +')'}}</span></span></li>
         </ul>
       </div>
       </div>
@@ -37,14 +37,23 @@ export default {
     store.dispatch('loadUserIfExist')
   },
   computed:{
-    shortFio(){
-      const fio = this.$store.getters.fio.split(' ');
-      let patronymic = ' '
-      if(fio[2]) {
-        patronymic = fio[2]
+    shortFio() {
+      if (store.getters.isLogin) {
+        const fio = store.getters.fio.split(' ');
+        let patronymic = ' ';
+        if (fio[2]) {
+          patronymic = fio[2]
+        }
+        let shortFio = ''
+        if(fio) {
+          shortFio = fio[0] + " " + fio[1].charAt(0) + '.' + patronymic.charAt(0) + '.';
+        }
+        return shortFio;
       }
-      const shortFio = fio[0] + " " + fio[1].charAt(0) +'.' + patronymic.charAt(0)+'.';
-      return shortFio;
+      return ''
+    },
+    isLogin(){
+      return store.getters.isLogin
     }
   },
   methods:{
