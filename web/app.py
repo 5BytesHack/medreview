@@ -1,18 +1,21 @@
 from aiohttp import web
 from aiohttp_cors import setup, ResourceOptions
-
+from classifier_model import classify, load_model_and_tokenizer
 
 app = web.Application()
+load_model_and_tokenizer()
 
-router = web.RouteTableDef()
 
-
-@router.post('/')
 async def get_text(request: web.Request):
-    data = await request.post()  # тут поле из одного ключа - текст data['key']
-    # тут нейронка делает свои дела
-    return web.json_response({'title': })
+    data = await request.post()
+    classified = classify(data.get('text'))
+    return web.json_response({'reviewed': bool(classified[0])})
 
+
+urls = [
+    web.post('/neural/', get_text)
+]
+app.add_routes(urls)
 
 cors = setup(app, defaults={
     '*': ResourceOptions(
@@ -26,4 +29,3 @@ for route in list(app.router.routes()):
     cors.add(route)
 
 web.run_app(app, port=8080)
-
