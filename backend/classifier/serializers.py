@@ -1,6 +1,6 @@
 from rest_framework import serializers
+from requests import post
 from .models import Review, Answer
-from .classifier_model import classify
 from customauth.serializers import CustomUserSerializer
 
 
@@ -12,17 +12,14 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = ['author', 'fio', 'mail', 'text']
 
     def create(self, validated_data):
-        title = classify(validated_data['text'])
+        title = post('web:8080/', data={'text': validated_data['text']})
         return Review.objects.create(
             author=validated_data['author'],
             fio=validated_data['fio'],
-            mail=validated_data['mail'],
+            mail=validated_data['email'],
             text=validated_data['text'],
             title=title
         )
-
-    def update(self, instance, validated_data):
-        pass
 
 
 class AnswerSerializer(serializers.ModelSerializer):
@@ -33,9 +30,11 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        fields = ['text', 'review']
+        fields = ['text', 'review', 'author']
 
     def create(self, validated_data):
         return Answer.objects.create(
-
+            text=validated_data['text'],
+            review=validated_data['review'],
+            author=validated_data['author']
         )

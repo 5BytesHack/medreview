@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.core.mail import send_mail
 
+from django.conf import settings
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView, Response
 from rest_framework import status
 
-from .serializers import ReviewSerializer, Review
+from .serializers import ReviewSerializer, Review, AnswerSerializer, Answer
 
 
 # Create your views here.
@@ -85,3 +86,38 @@ class CreateReviewAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(status=status.HTTP_201_CREATED)
+
+
+class CreateAnswerAPIView(APIView):
+    renderer_classes = [JSONRenderer]
+    permission_classes = (AllowAny,)
+    serializer_class = AnswerSerializer
+
+    def post(self, request):
+        data = request.data.get('answer', {})
+        serializer = self.serializer_class(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        review = Review.objects.get(answer=serializer.data)
+        send_mail(
+            'Ответ на ваше заявление',
+            f'{data["text"]}',
+            settings.EMAIL_HOST_USER,
+            review.get_email()
+        )
+        return Response(status=status.HTTP_201_CREATED)
+
+
+class UserAnswersAPIView(APIView):
+    renderer_classes = [JSONRenderer]
+    permission_classes = (AllowAny,)
+    serializer_class = AnswerSerializer(many=True)
+
+    def get(self, request, page: int):
+        user = request.user
+        answers = Answer.objects.filter(author=user)[page * 20:(page + 1) * 20]
+        ctx = {
+            'user': user,
+            'answers': answers
+        }
+        return Response(ctx)
