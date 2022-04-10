@@ -27,12 +27,20 @@
     </div>
 
   </div>
-  <h1 class="mt-4 text-center applies-header">Обращения</h1>
+
 
   <div class="bg-white accordion-wrapper">
-    <div class="mb-3">
-      <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-      <input class="form-control py-3" type="file" id="formFileMultiple" multiple>
+    <h1 class="mt-4 text-center applies-header position-relative">Обращения
+      <button class="btn position-absolute upl-button ">
+        <router-link to="/apply_add" style="text-decoration: none" class="text-white">Add+</router-link>
+      </button>
+    </h1>
+<!--    <div class="mb-3">-->
+<!--      <label for="formFileMultiple" class="form-label">Multiple files input example</label>-->
+<!--      <input class="form-control" type="file" id="formFileMultiple" multiple>-->
+<!--    </div>-->
+    <div class="upl-btn-container">
+
     </div>
     <div class="accordion accordion-flush " id="our_accordion">
       <div class="accordion-item mb-2">
@@ -177,6 +185,20 @@ export default {
 
 <style scoped>
 @import'bootstrap/dist/css/bootstrap.min.css';
+.upl-button{
+top:0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFBD5E;
+  border-color: #FFBD5E;
+  overflow: hidden;
+
+}
+.upl-button:hover{
+  background-color: #FDA82E;
+  border-color: #FDA82E;
+}
+
 .profile-status{
   background-color: #FDA82E;
   border-radius: 40px;
