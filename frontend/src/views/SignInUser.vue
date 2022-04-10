@@ -13,7 +13,7 @@
         <div class="flex-grow-1 d-flex flex-column justify-content-end">
           <div class="d-flex flex-column text-center w-100 mt-5 mb-3">
             <button type="button" v-on:click="login" class="w-75 btn  align-self-center py-2"><strong>Войти</strong></button>
-            <router-link to="/user_register">Регистрация</router-link>
+            <router-link to="/user_register" class="our-link">Регистрация</router-link>
           </div>
         </div>
       </form>
@@ -22,17 +22,31 @@
 </template>
 
 <script>
+import store from "@/store";
+
 export default {
   name: "SignInUser",
   data(){
     return{
-      fio:'',
       email:'',
       password:''
     }
   },
   methods:{
-
+    async login(){
+      const req_body = {
+        user:{
+          email:this.email,
+          password:this.password
+        }
+      }
+      await store.dispatch('logInReq', req_body)
+      if(store.getters.isLogin) {
+        await store.dispatch('getUserInfo')
+        await store.dispatch('saveToLocal')
+        this.$router.push('/user_cabinet')
+      }
+    }
   }
 }
 </script>
@@ -60,6 +74,12 @@ export default {
   src:local('Inter'),
   url("../fonts/Inter-Black.ttf") format('truetype');
 }
+.our-link{
+  color: #42b983;
+}
+.our-link:hover{
+  color: #1F7A74;
+}
 .white-platform{
   background-color: rgb(255,255,255,.65);
   border-radius: 40px;
@@ -80,6 +100,8 @@ export default {
 .form-control{
   border-width: 2px;
   border-color: #36B3B5;
+  font-family: 'Inter';
+  font-weight: 400;
 }
 .white-platform{
   color: #24958C;
@@ -87,6 +109,6 @@ export default {
 .form-label{
   font-family: 'Inter';
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 </style>
