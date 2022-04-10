@@ -141,3 +141,10 @@ REST_FRAMEWORK = {
         'customauth.backends.JWTAuthentication',
     ),
 }
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mail.com'
+EMAIL_PORT = 465
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = 'medreviewer@mail.com'
+EMAIL_HOST_PASSWORD = 'zyBU81rTRnRq0Q6QUqUX'

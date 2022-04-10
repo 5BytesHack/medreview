@@ -9,7 +9,7 @@ router = web.RouteTableDef()
 
 @router.post('/')
 async def get_text(request: web.Request):
-    data = await request.post()
+    data = await request.post()  # тут поле из одного ключа - текст data['key']
     # тут нейронка делает свои дела
     return web.json_response({'title': })
 
@@ -25,4 +25,5 @@ cors = setup(app, defaults={
 for route in list(app.router.routes()):
     cors.add(route)
 
-web.run_app(app)
+web.run_app(app, port=8080)
+
