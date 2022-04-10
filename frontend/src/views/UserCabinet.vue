@@ -166,6 +166,10 @@ export default {
       localStorage.clear();
       store.commit('setIsLogin', false)
       store.commit('setIsAdmin', false)
+
+      store.commit('setFio', '')
+      store.commit('setEmail', '')
+      store.commit('setUserToken', '')
     }
   }
 }
