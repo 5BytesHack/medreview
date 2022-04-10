@@ -2,11 +2,11 @@
 <div class="container w-100 h-100 py-4">
   <div class="white-platform ps-4 pe-4 ">
     <form action="" class="d-flex flex-column h-100 pb-3 ">
-      <div v-if="isLogin" class="form-group mt-4 mb-2 ">
+      <div v-if="!isLogin" class="form-group mt-4 mb-2 ">
         <label style="font-family: 'Inter';font-weight: 700" for="fioinput" class="form-label">ФИО:</label>
         <input v-model="fio" style="font-family: 'Inter';font-weight: 400" type="email" class="form-control" id="fioinput" aria-describedby="emailHelp" placeholder="Введите ФИО">
       </div>
-      <div v-if="isLogin" class="form-group mb-2">
+      <div v-if="!isLogin" class="form-group mb-2">
         <label style="font-family: 'Inter';font-weight: 700" for="emailinput" class="form-label">E-mail:</label>
         <input v-model="email" style="font-family: 'Inter';font-weight: 400" type="email" class="form-control" id="emailinput" aria-describedby="emailHelp" placeholder="Введите Email">
       </div>
@@ -53,12 +53,12 @@ export default {
       const req_body = {
         review: {
           author: {
-            email:'',
-            first_name:'',
-            last_name:'',
-            patronymic:'',
-            is_staff:'',
-            token:''
+            email: '',
+            first_name: '',
+            last_name: '',
+            patronymic: '',
+            is_staff: '',
+            token: ''
           }
         },
         fio: this.fio,
@@ -78,19 +78,18 @@ export default {
           req_body.review.fio = store.getters.fio
           req_body.review.email = store.getters.email
           req_body.review.text = this.text
-        }
-        else{
+        } else {
           req_body.review.author = null
         }
         console.log('req_body ', req_body)
       }
       store.dispatch('sendApply', req_body)
     },
-    computed: {
+  },
+  computed: {
       isLogin() {
         return store.getters.isLogin;
       }
-    }
   }
 }
 </script>
