@@ -7,6 +7,7 @@ import ChangeUserProfile from "@/views/ChangeUserProfile";
 import ApplyDetails from "@/views/ApplyDetails";
 import RegisterUser from "@/views/RegisterUser";
 import SignInUser from "@/views/SignInUser";
+import ApplyAdd from "@/views/ApplyAdd";
 
 
 const routes = [
@@ -77,6 +78,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     //component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
     component: SignInUser
+  },
+  {
+    path: '/apply_add',
+    name: 'apply_add',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    //component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: ApplyAdd
   },
 ]
 
