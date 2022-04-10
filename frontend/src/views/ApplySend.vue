@@ -53,21 +53,21 @@ export default {
       const req_body = {
         review: {
           author: {
-            email: '',
+            mail: '',
             first_name: '',
             last_name: '',
             patronymic: '',
             is_staff: '',
             token: ''
-          }
-        },
-        fio: this.fio,
-        email: this.email,
-        text: this.text
+          },
+          fio: this.fio,
+          mail: this.email,
+          text: this.text
+        }
       }
       if (store.getters.isLogin) {
         const fio = store.getters.fio.split(' ')
-        req_body.review.author.email = store.getters.email
+        req_body.review.author.mail = store.getters.email
         req_body.review.author.first_name = fio[0]
         req_body.review.author.last_name = fio[1]
         if (fio[2]) {
@@ -76,13 +76,26 @@ export default {
           req_body.review.author.token = store.getters.userToken
 
           req_body.review.fio = store.getters.fio
-          req_body.review.email = store.getters.email
+          req_body.review.mail = store.getters.email
           req_body.review.text = this.text
-        } else {
+        }
+      }
+      else {
           req_body.review.author = null
         }
-        console.log('req_body ', req_body)
+      //console.log('req_body ', req_body)
+
+      const req_body2 = {
+        review:{
+          author: store.getters.email,
+          fio : store.getters.fio,
+          email :store.getters.email,
+          text:this.text
+        }
       }
+
+      console.log(req_body2)
+
       store.dispatch('sendApply', req_body)
     },
   },

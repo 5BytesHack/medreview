@@ -5,7 +5,7 @@ from customauth.serializers import CustomUserSerializer
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    author = CustomUserSerializer()
+    author = serializers.ReadOnlyField(source='author.email')
 
     class Meta:
         model = Review
@@ -16,7 +16,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         return Review.objects.create(
             author=validated_data['author'],
             fio=validated_data['fio'],
-            mail=validated_data['email'],
+            mail=validated_data['mail'],
             text=validated_data['text'],
             title=title
         )

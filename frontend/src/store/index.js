@@ -7,7 +7,7 @@ export default createStore({
     fio:'',
     email:'',
     user_token:'',
-    reqURL:'http://127.0.0.1:8000/api/'
+    reqURL:'django'
   },
   getters: {
     isAdmin(state){
@@ -164,6 +164,7 @@ export default createStore({
       }
       let response
       try {
+        console.log('req_opts ',req_opts)
         response = await fetch(context.getters.reqURL+'create_review/', req_opts)
         if(response.ok){
           this.$router.push('/')
