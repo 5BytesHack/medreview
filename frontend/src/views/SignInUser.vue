@@ -13,6 +13,7 @@
         <div class="flex-grow-1 d-flex flex-column justify-content-end">
           <div class="text-center w-100 mt-5 mb-3">
             <button type="button" v-on:click="login" class="w-75 btn  align-self-center py-2"><strong>Войти</strong></button>
+            <router-link to="/user_register">Регистрация</router-link>
           </div>
         </div>
       </form>
@@ -55,17 +56,8 @@ export default {
   border-radius: 39px;
   height: 46px;
 }
-.form-control, .form-check-input{
+.form-control{
   border-width: 2px;
-  border-color: #36B3B5;
-}
-.form-check-input{
-  border-radius: 0 !important;
-  height: 30px;
-  width: 30px;
-}
-.form-check-input:checked {
-  background-color: #36B3B5;
   border-color: #36B3B5;
 }
 .white-platform{

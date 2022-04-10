@@ -6,8 +6,11 @@
         <div v-if="isAdmin" class="profile-status py-1  px-4 text-center mb-3 ">
           <span>Сотрудник</span>
         </div>
-        <div class="mt-2 text-end pe-4 position-absolute edit-btn">
-          <router-link to="/change_profile">
+        <div class="d-flex flex-column mt-2 text-end pe-4 position-absolute edit-btn">
+          <router-link v-on:click="signOut" to="/">
+            <img src="../svg/signOutIcon.svg" alt="">
+          </router-link>
+          <router-link class="mt-2" to="/change_profile">
             <img src="../svg/_icons.svg" alt="">
           </router-link>
         </div>
@@ -151,6 +154,13 @@ export default {
     },
     isAdmin(){
       return store.getters.isAdmin;
+    }
+  },
+  methods:{
+    signOut(){
+      localStorage.clear();
+      store.commit('setIsLogin', false)
+      store.commit('setIsAdmin', false)
     }
   }
 }
