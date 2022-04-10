@@ -77,16 +77,8 @@ export default {
         }
       }
       store.dispatch('loginReq', req_body)
-      //store.dispatch('saveToLocal')
-      const user = {
-        fio : [first_name,last_name,patronymic].join(' '),
-        email : this.email,
-        user_token : store.getters.userToken,
-        isAdmin : false,
-        isLogin : true
-      }
-      console.log(user)
-      localStorage.setItem('user', JSON.stringify(user))
+      //console.log('URL', this.$store.getters(''))
+      store.dispatch('saveToLocal')
     }
   }
 }

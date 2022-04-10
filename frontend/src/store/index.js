@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     is_admin:false,
-    isLogin:false,
+    is_login:false,
     fio:'',
     email:'',
     user_token:'',
@@ -14,7 +14,7 @@ export default createStore({
       return state.is_admin
     },
     isLogin(state){
-      return state.isLogin
+      return state.is_login
     },
     fio(state){
       return state.fio
@@ -78,11 +78,11 @@ export default createStore({
 
     saveToLocal(context){
       const user = {
-        fio : context.state.fio,
-        email : context.state.email,
-        user_token : context.state.userToken,
-        isAdmin : context.state.isAdmin,
-        isLogin : context.state.isLogin
+        fio : context.getters.fio,
+        email : context.getters.email,
+        user_token : context.getters.userToken,
+        isAdmin : context.getters.isAdmin,
+        isLogin : context.getters.isLogin
       }
       console.log(user)
       localStorage.setItem('user', JSON.stringify(user))

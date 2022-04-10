@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import store from "@/store";
 export default {
   data(){
     return{
@@ -34,17 +33,16 @@ export default {
     }
   },
   created(){
-    store.dispatch('loadUserIfExist')
+    this.$store.dispatch('loadUserIfExist')
   },
   computed:{
     fio(){
-      console.log(this.$store.getters.fio)
       return this.$store.getters.fio;
     }
   },
   methods:{
     goToUserCabinetIfLogin(){
-      if(store.getters.isLogin){
+      if(this.$store.getters.isLogin){
         this.$router.push('/user_cabinet')
       }
       else{
