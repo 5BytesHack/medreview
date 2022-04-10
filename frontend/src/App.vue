@@ -12,7 +12,7 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav">
-          <li class="nav-item d-inline-flex"><span id="user-cabinet-link" v-on:click="goToUserCabinetIfLogin" class="nav-link pb-0 pt-md-4 h5 m-0">Личный кабинет</span></li>
+          <li class="nav-item d-inline-flex"><span id="user-cabinet-link" v-on:click="goToUserCabinetIfLogin" class="nav-link text-nowrap pb-0 pt-md-4 h5 m-0">Личный кабинет {{'('+ shortFio +')'}}</span></li>
         </ul>
       </div>
       </div>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import store from "@/store";
 export default {
   data(){
     return{
@@ -33,11 +34,17 @@ export default {
     }
   },
   created(){
-    this.$store.dispatch('loadUserIfExist')
+    store.dispatch('loadUserIfExist')
   },
   computed:{
-    fio(){
-      return this.$store.getters.fio;
+    shortFio(){
+      const fio = this.$store.getters.fio.split(' ');
+      let patronymic = ' '
+      if(fio[2]) {
+        patronymic = fio[2]
+      }
+      const shortFio = fio[0] + " " + fio[1].charAt(0) +'.' + patronymic.charAt(0)+'.';
+      return shortFio;
     }
   },
   methods:{

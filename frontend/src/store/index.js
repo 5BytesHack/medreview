@@ -39,7 +39,7 @@ export default createStore({
       state.is_admin = is_admin
     },
     setIsLogin(state, isLogin){
-      state.isLogin = isLogin
+      state.is_login = isLogin
     },
     setFio(state, fio){
       state.fio = fio
@@ -65,35 +65,44 @@ export default createStore({
       try {
         response = await fetch(context.getters.reqURL, req_opts)
         userData = await response.json()
+        console.log('UserData ',userData)
       }catch (e){
         console.log(e)
         return
       }
-      if(userData.user.token === '' || userData.user.token === null)
+      if(userData.user.token === '' || userData.user.token === null) {
         return
+      }
       context.commit('setIsLogin', true)
       context.commit('setIsAdmin', false)
+      context.commit('setFio', userData.user.first_name)
       context.commit('setUser', userData.user)
     },
 
     saveToLocal(context){
       const user = {
-        fio : context.getters.fio,
-        email : context.getters.email,
-        user_token : context.getters.userToken,
-        isAdmin : context.getters.isAdmin,
-        isLogin : context.getters.isLogin
+        fio : context.state.fio,
+        email : context.state.email,
+        user_token : context.state.user_token,
+        isAdmin : context.state.is_admin,
+        isLogin : context.state.is_login
       }
-      console.log(user)
+      console.log('userInLS ',user)
+      localStorage.clear()
       localStorage.setItem('user', JSON.stringify(user))
     },
 
     loadUserIfExist(context){
       const user = JSON.parse(localStorage.getItem('user'))
       if(user){
-        context.commit('setUser', user)
-        context.commit('setIsLogin', user.isLogin)
-        context.commit('setIsAdmin', user.isAdmin)
+        console.log('parsedUser ', user)
+        context.state.fio = user.fio
+        context.state.email = user.email
+        context.state.user_token = user.user_token
+        context.state.is_login = user.isLogin
+        context.state.is_admin = user.isAdmin
+        //context.commit('setIsLogin', user.isLogin)
+        //context.commit('setIsAdmin', user.isAdmin)
       }
     }
   },

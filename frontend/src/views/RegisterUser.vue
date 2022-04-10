@@ -52,7 +52,7 @@ export default {
     }
   },
   methods:{
-    register(){
+    async register(){
       const fio_split = this.fio.split(' ')
       let first_name = ''
       let last_name = ''
@@ -76,9 +76,9 @@ export default {
           password:this.password
         }
       }
-      store.dispatch('loginReq', req_body)
+      await store.dispatch('loginReq', req_body)
       //console.log('URL', this.$store.getters(''))
-      store.dispatch('saveToLocal')
+      await store.dispatch('saveToLocal')
     }
   }
 }
