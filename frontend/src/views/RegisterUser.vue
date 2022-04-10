@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import store from "@/store";
 export default {
   name: "RegisterUser",
   data(){
@@ -51,11 +52,33 @@ export default {
     }
   },
   methods:{
-    register(){
-      console.log('register')
-      const {first_name, last_name, patronymic} = [...this.fio.split()]
+    async register(){
+      const fio_split = this.fio.split(' ')
+      let first_name = ''
+      let last_name = ''
+      let patronymic = null
+      if(fio_split[0]) {
+        first_name = fio_split[0]
+      }
+      if(fio_split[1]) {
+        last_name = fio_split[1]
+      }
+      if(fio_split[2]) {
+        patronymic = fio_split[2]
+      }
       console.log(first_name, last_name, patronymic)
-      //const req_body = ''
+      const req_body = {
+        user:{
+          email:this.email,
+          first_name:first_name,
+          last_name:last_name,
+          patronymic:patronymic,
+          password:this.password
+        }
+      }
+      await store.dispatch('loginReq', req_body)
+      //console.log('URL', this.$store.getters(''))
+      await store.dispatch('saveToLocal')
     }
   }
 }
@@ -63,6 +86,27 @@ export default {
 
 <style scoped>
 @import'bootstrap/dist/css/bootstrap.min.css';
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-style: normal;
+  src:local('Inter'),
+  url('../fonts/Inter-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-style: normal;
+  src:local('Inter'),
+  url('../fonts/Inter-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: normal;
+  src:local('Inter'),
+  url("../fonts/Inter-Black.ttf") format('truetype');
+}
 .white-platform{
   background-color: rgb(255,255,255,.65);
   border-radius: 40px;

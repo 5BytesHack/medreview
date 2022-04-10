@@ -1,10 +1,10 @@
 <template>
-  <div class="my-body d-flex flex-column h-100">
+  <div style="font-family: 'Inter';font-weight: 400" class="my-body d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg navbar-dark pb-1 pt-2 justify-content-center">
       <div class="container m-1">
         <router-link to="/" class="navbar-brand d-flex flex-row">
           <img src="./img/logo_white.png" alt="">
-          <h1 class="m-0 pt-2">MedReview</h1>
+          <h1 style="font-family: 'Inter';font-weight: 900" class="m-0 pt-2">MedReview</h1>
         </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav">
-          <li class="nav-item"><span v-on:click="goToUserCabinetIfLogin" class="nav-link pb-0 pt-md-4 h5 m-0">Личный кабинет</span></li>
+          <li class="nav-item d-inline-flex"><span id="user-cabinet-link" v-on:click="goToUserCabinetIfLogin" class="nav-link text-nowrap pb-0 pt-md-4 h5 m-0">Личный кабинет <span v-if="isLogin">{{'('+ shortFio +')'}}</span></span></li>
         </ul>
       </div>
       </div>
@@ -33,15 +33,32 @@ export default {
 
     }
   },
+  created(){
+    store.dispatch('loadUserIfExist')
+  },
   computed:{
-    fio(){
-      console.log(this.$store.getters.fio)
-      return this.$store.getters.fio;
+    shortFio() {
+      if (store.getters.isLogin) {
+        const fio = store.getters.fio.split(' ');
+        let patronymic = ' ';
+        if (fio[2]) {
+          patronymic = fio[2]
+        }
+        let shortFio = ''
+        if(fio) {
+          shortFio = fio[0] + " " + fio[1].charAt(0) + '.' + patronymic.charAt(0) + '.';
+        }
+        return shortFio;
+      }
+      return ''
+    },
+    isLogin(){
+      return store.getters.isLogin
     }
   },
   methods:{
     goToUserCabinetIfLogin(){
-      if(store.getters.isLogin){
+      if(this.$store.getters.isLogin){
         this.$router.push('/user_cabinet')
       }
       else{
@@ -54,6 +71,9 @@ export default {
 
 <style scoped>
 @import'bootstrap/dist/css/bootstrap.min.css';
+#user-cabinet-link:hover{
+  cursor: pointer;
+}
 .navbar{
   background-color: #2DB5AB;
 }

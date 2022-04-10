@@ -3,11 +3,14 @@
   <div class="d-flex mt-2 justify-content-md-center position-relative">
     <div class="profile-list mt-2 ps-4 ps-md-0 text-md-center flex-md-shrink-1">
       <div class="profile-status-wrapper ps-1 d-md-flex justify-content-center">
-        <div class="profile-status py-1  px-4 text-center mb-3 ">
+        <div v-if="isAdmin" class="profile-status py-1  px-4 text-center mb-3 ">
           <span>Сотрудник</span>
         </div>
-        <div class="mt-2 text-end pe-4 position-absolute edit-btn">
-          <router-link to="/change_profile">
+        <div class="d-flex flex-column mt-2 text-end pe-4 position-absolute edit-btn">
+          <router-link v-on:click="signOut" to="/">
+            <img src="../svg/signOutIcon.svg" alt="">
+          </router-link>
+          <router-link class="mt-2" to="/change_profile">
             <img src="../svg/_icons.svg" alt="">
           </router-link>
         </div>
@@ -16,30 +19,36 @@
         <img src="../img/Union.png" alt="">
       </div>
       <div class="personal-data ps-2">
-        <h1 class="last-name ">Ухина</h1>
-        <h1 class="second-name">Диана</h1>
-        <h1 class="first-name">Андреевна</h1>
+        <h1 class="last-name ">{{firstName}}</h1>
+        <h1 class="second-name">{{lastName}}</h1>
+        <h1 class="first-name">{{patronymic}}</h1>
       </div>
 
     </div>
 
   </div>
-  <h1 class="mt-4 text-center applies-header">Обращения</h1>
-  <div class="bg-white accordion-wrapper  ">
+  <h1 style="font-family: 'Inter';font-weight: 900" class="mt-4 text-center applies-header">Обращения</h1>
+
+  <div class="bg-white accordion-wrapper">
+    <div class="mb-3">
+      <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+      <input class="form-control py-3" type="file" id="formFileMultiple" multiple>
+    </div>
     <div class="accordion accordion-flush " id="our_accordion">
       <div class="accordion-item mb-2">
         <h2 class="accordion-header" id="flush-heading1">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
             <span class="m-0 pe-4 apply-num">#1:</span>
-            <span class=" m-0 text-truncate apply-header">Здесь должен быть какой то текст</span>
-            <span class="flex-grow-1 text-end px-3">
+            <span style="font-family: 'Inter';font-weight: 400" class=" m-0 text-truncate apply-header">Здесь должен быть какой то текст</span>
+            <span style="font-family: 'Inter';font-weight: 400" class="flex-grow-1 text-end px-3">
               <img src="../svg/clock.svg" alt="" class="status-img">
             </span>
           </button>
         </h2>
         <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#our_accordion">
-          <div class="accordion-body">
-            <span class="pb-1 text-wrap text-wrapper"><strong>Дата создания обращения:</strong>
+          <div style="font-family: 'Inter';font-weight: 400" class="accordion-body">
+            <span class="pb-1 text-wrap text-wrapper">
+              <strong>Дата создания обращения:</strong>
               <span class="date-text">
                 25.08.2019
               </span>
@@ -128,7 +137,7 @@
 </template>
 
 <script>
-
+import store from "@/store";
 export default {
   name: "UserCabinet",
   data(){
@@ -137,8 +146,31 @@ export default {
     }
   },
   computed:{
-    fio(){
-      return '';
+    firstName(){
+      const first_name = store.getters.fio?.split(' ')[0];
+      return first_name === null?'':first_name
+    },
+    lastName(){
+      const last_name = store.getters.fio?.split(' ')[1];
+      return last_name === null?'':last_name
+    },
+    patronymic(){
+      const patronymic = store.getters.fio?.split(' ')[2];
+      return patronymic === null?'':patronymic
+    },
+    isAdmin(){
+      return store.getters.isAdmin;
+    }
+  },
+  methods:{
+    signOut(){
+      localStorage.clear();
+      store.commit('setIsLogin', false)
+      store.commit('setIsAdmin', false)
+
+      store.commit('setFio', '')
+      store.commit('setEmail', '')
+      store.commit('setUserToken', '')
     }
   }
 }
@@ -146,6 +178,27 @@ export default {
 
 <style scoped>
 @import'bootstrap/dist/css/bootstrap.min.css';
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-style: normal;
+  src:local('Inter'),
+  url('../fonts/Inter-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-style: normal;
+  src:local('Inter'),
+  url('../fonts/Inter-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: normal;
+  src:local('Inter'),
+  url("../fonts/Inter-Black.ttf") format('truetype');
+}
 .profile-status{
   background-color: #FDA82E;
   border-radius: 40px;
@@ -166,8 +219,8 @@ export default {
 }
 .accordion{
   border-radius: 13px !important;
-  max-width: 900px !important;
-  margin: 0 auto;
+
+
 }
 .accordion-header{
   border-radius: 13px !important;
@@ -175,6 +228,8 @@ export default {
 .accordion-wrapper{
   border-radius: 13px;
   background-color: transparent !important;
+  max-width: 900px !important;
+  margin: 0 auto;
 }
 .accordion-button:not(.collapsed) {
   color: white;
@@ -199,5 +254,9 @@ font-size: 1rem;
   top:0;
   right: 0;
   bottom: 0;
+}
+.form-control{
+  border: 2px solid #36B3B5;
+  border-radius: 13px;
 }
 </style>
