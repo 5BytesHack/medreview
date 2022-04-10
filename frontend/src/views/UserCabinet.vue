@@ -25,7 +25,12 @@
 
   </div>
   <h1 class="mt-4 text-center applies-header">Обращения</h1>
-  <div class="bg-white accordion-wrapper  ">
+
+  <div class="bg-white accordion-wrapper">
+    <div class="mb-3">
+      <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+      <input class="form-control py-3" type="file" id="formFileMultiple" multiple>
+    </div>
     <div class="accordion accordion-flush " id="our_accordion">
       <div class="accordion-item mb-2">
         <h2 class="accordion-header" id="flush-heading1">
@@ -178,8 +183,8 @@ export default {
 }
 .accordion{
   border-radius: 13px !important;
-  max-width: 900px !important;
-  margin: 0 auto;
+
+
 }
 .accordion-header{
   border-radius: 13px !important;
@@ -187,6 +192,8 @@ export default {
 .accordion-wrapper{
   border-radius: 13px;
   background-color: transparent !important;
+  max-width: 900px !important;
+  margin: 0 auto;
 }
 .accordion-button:not(.collapsed) {
   color: white;
@@ -211,5 +218,9 @@ font-size: 1rem;
   top:0;
   right: 0;
   bottom: 0;
+}
+.form-control{
+  border: 2px solid #36B3B5;
+  border-radius: 13px;
 }
 </style>
