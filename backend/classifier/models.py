@@ -22,4 +22,4 @@ class Answer(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
     text = models.TextField(verbose_name='Текст ответа')
     date = models.DateField(verbose_name='Дата ответа', auto_now=True)
-    author = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL)
+    author = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
