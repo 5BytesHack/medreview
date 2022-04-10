@@ -3,24 +3,24 @@
     <div class="white-platform ps-4 pe-4 flex-grow-1">
       <form action="" class="d-flex flex-column h-100 pb-3 ">
         <div class="form-group mt-4 mb-2">
-          <label for="fioinput" class="form-label">ФИО:</label>
-          <input type="text" class="form-control" id="fioinput" aria-describedby="fio" v-bind:value="fio" placeholder="ФИО">
+          <label for="fioinput" class="form-label" style="font-family: 'Inter';font-weight: 700">ФИО:</label>
+          <input type="text" class="form-control" id="fioinput" aria-describedby="fio" v-bind:value="fio" placeholder="ФИО" style="font-family: 'Inter';font-weight: 400">
         </div>
         <div class="form-group mb-2">
-          <label for="oldpasswordinput" class="form-label">Старый пароль:</label>
-          <input type="password" class="form-control" id="oldpasswordinput" aria-describedby="password" placeholder="старый пароль">
+          <label for="oldpasswordinput" class="form-label" style="font-family: 'Inter';font-weight: 700">Старый пароль:</label>
+          <input type="password" class="form-control" id="oldpasswordinput" aria-describedby="password" placeholder="старый пароль" style="font-family: 'Inter';font-weight: 400">
         </div>
         <div class="form-group mb-2">
-          <label for="newpasswordinput" class="form-label">Новый пароль:</label>
-          <input type="password" class="form-control" id="newpasswordinput" aria-describedby="password" placeholder="новый пароль">
+          <label for="newpasswordinput" class="form-label" style="font-family: 'Inter';font-weight: 700">Новый пароль:</label>
+          <input type="password" class="form-control" id="newpasswordinput" aria-describedby="password" placeholder="новый пароль" style="font-family: 'Inter';font-weight: 400">
         </div>
         <div class="form-group mb-2">
-          <label for="newpasswordinput_2" class="form-label">Повторите новый пароль:</label>
-          <input type="password" class="form-control" id="newpasswordinput_2" aria-describedby="password" placeholder="повторите новый пароль">
+          <label for="newpasswordinput_2" class="form-label" style="font-family: 'Inter';font-weight: 700">Повторите новый пароль:</label>
+          <input type="password" class="form-control" id="newpasswordinput_2" aria-describedby="password" placeholder="повторите новый пароль" style="font-family: 'Inter';font-weight: 400">
         </div>
         <div class="flex-grow-1 d-flex flex-column justify-content-end">
           <div class="text-center w-100 mt-2">
-            <button type="button" class="w-75 btn  align-self-center py-2"><strong>Сохранить</strong></button>
+            <button type="button" class=" btn  align-self-center py-2" style="font-family: 'Inter';font-weight: 700">Сохранить</button>
           </div>
         </div>
       </form>
@@ -72,6 +72,6 @@ export default {
 }
 .form-label{
   font-size: 1.4rem;
-  font-weight: 650;
+
 }
 </style>
