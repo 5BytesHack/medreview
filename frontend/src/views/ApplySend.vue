@@ -85,16 +85,16 @@ export default {
         }
       //console.log('req_body ', req_body)
 
-      const req_body2 = {
+      /*const req_body2 = {
         review:{
           author: store.getters.email,
           fio : store.getters.fio,
           email :store.getters.email,
           text:this.text
         }
-      }
+      }*/
 
-      console.log(req_body2)
+      //console.log(req_body2)
 
       store.dispatch('sendApply', req_body)
     },
